@@ -35,17 +35,11 @@ router.get('/user/auth/', async (req, res) => {
     // bodyFormData.append('grant_type', 'authorization_code');
     // bodyFormData.append('redirect_uri', 'https://instaunfollowers-dc8e3299f8e9.herokuapp.com/user/auth/');
     // bodyFormData.append('code', code);
-    const url = "https://api.instagram.com/oauth/access_token";
+    const URL = "https://api.instagram.com/oauth/access_token";
     console.log('here2');
-    res.send({
-        values,
-        test: qs.stringify(values)
-    })
-    console.log('here3');
-    
     
     try {
-        const response = await axios.post(url, qs.stringify(values), {
+        const response = await axios.post(URL, qs.stringify(values), {
             headers: {
                 "Content-Type": 'application/x-www-form-urlencoded'
             },
