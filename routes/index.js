@@ -39,24 +39,17 @@ router.get('/user/auth/', async (req, res) => {
     // const URL = "https://api.instagram.com/oauth/access_token";
     // console.log('here2');
     
-    res.send({code});
-    // try {
-    //     const response = await axios.post(URL, qs.stringify(values), {
-    //         headers: {
-    //             "Content-Type": 'application/x-www-form-urlencoded'
-    //         },
-    //     });
-    //     res.send(
-    //         { 
-    //             name: "Hello World",
-    //             response
-    //         }
-    //     )
-    // } catch (error) {
-    //     console.log('here4');
-    //     console.error(error);
-    //     res.send(error);
-    // }
+    try {
+        const response = await axios.post(URL, qs.stringify(values), {
+            headers: {
+                "Content-Type": 'application/x-www-form-urlencoded'
+            },
+        });
+        res.send({code});
+    } catch (error) {
+        console.log('here4');
+        res.send({in: "error"});
+    }
 })
 
 
