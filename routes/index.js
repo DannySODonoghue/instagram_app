@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/user/auth/', async (req, res) => {
+    console.log('here');
     const code = req.query.code;
     const values = {
         client_id: CLIENT_ID,
@@ -35,28 +36,30 @@ router.get('/user/auth/', async (req, res) => {
     // bodyFormData.append('redirect_uri', 'https://instaunfollowers-dc8e3299f8e9.herokuapp.com/user/auth/');
     // bodyFormData.append('code', code);
     const url = "https://api.instagram.com/oauth/access_token";
+    console.log('here2');
     res.send({
         values,
         test: qs.stringify(values)
     })
-    return;
+    console.log('here3');
     
-    try {
-        const response = await axios.post(url, qs.stringify(values), {
-            headers: {
-                "Content-Type": 'application/x-www-form-urlencoded'
-            },
-        });
-        res.send(
-            { 
-                name: "Hello World",
-                response
-            }
-        )
-    } catch (error) {
-        console.error(error);
-        res.send(error);
-    }
+    
+    // try {
+    //     const response = await axios.post(url, qs.stringify(values), {
+    //         headers: {
+    //             "Content-Type": 'application/x-www-form-urlencoded'
+    //         },
+    //     });
+    //     res.send(
+    //         { 
+    //             name: "Hello World",
+    //             response
+    //         }
+    //     )
+    // } catch (error) {
+    //     console.error(error);
+    //     res.send(error);
+    // }
 })
 
 
