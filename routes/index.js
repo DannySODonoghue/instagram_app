@@ -36,16 +36,17 @@ router.get('/user/auth/', async (req, res) => {
     
     try {
         console.log('in try block');
-        console.log(values.client_id);
         const response = await axios.post(url, {
-            client_id: CLIENT_ID,
-            client_secret: CLIENT_SECRET,
-            grant_type: 'authorization_code',
-            redirect_uri: 'https://instaunfollowers-dc8e3299f8e9.herokuapp.com/user/auth/',
-            code
+            data : {
+                client_id: CLIENT_ID,
+                client_secret: CLIENT_SECRET,
+                grant_type: 'authorization_code',
+                redirect_uri: 'https://instaunfollowers-dc8e3299f8e9.herokuapp.com/user/auth/',
+                code
+            }
         });
         console.log('here');
-        res.send(response);
+        res.send({response});
     } catch (error) {
         console.log('here4');
         console.error(error);
