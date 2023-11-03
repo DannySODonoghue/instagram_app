@@ -22,15 +22,14 @@ router.get('/', (req, res) => {
 router.get('/user/auth/', async (req, res) => {
     console.log('here');
     const code = req.query.code;
-    res.send({code});
-
-    // const values = {
-    //     client_id: CLIENT_ID,
-    //     client_secret: CLIENT_SECRET,
-    //     grant_type: 'authorization_code',
-    //     redirect_uri: 'https://instaunfollowers-dc8e3299f8e9.herokuapp.com/user/auth/',
-    //     code
-    // }
+    
+    const values = {
+        client_id: CLIENT_ID,
+        client_secret: CLIENT_SECRET,
+        grant_type: 'authorization_code',
+        redirect_uri: 'https://instaunfollowers-dc8e3299f8e9.herokuapp.com/user/auth/',
+        code
+    }
     // const bodyFormData = new FormData();
     // bodyFormData.append('client_id', CLIENT_ID);
     // bodyFormData.append('client_secret', CLIENT_SECRET);
@@ -40,6 +39,7 @@ router.get('/user/auth/', async (req, res) => {
     // const URL = "https://api.instagram.com/oauth/access_token";
     // console.log('here2');
     
+    res.send({code});
     // try {
     //     const response = await axios.post(URL, qs.stringify(values), {
     //         headers: {
