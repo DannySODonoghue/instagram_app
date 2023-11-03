@@ -33,7 +33,6 @@ router.get('/user/auth/', async (req, res) => {
     
     try {
         console.log('in try block');
-        console.log(values);
         const response = await axios.post(url, {
             client_id: CLIENT_ID,
             client_secret: CLIENT_SECRET,
