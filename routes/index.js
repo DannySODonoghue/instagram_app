@@ -44,22 +44,22 @@ router.get('/user/auth/', async (req, res) => {
     console.log('here3');
     
     
-    // try {
-    //     const response = await axios.post(url, qs.stringify(values), {
-    //         headers: {
-    //             "Content-Type": 'application/x-www-form-urlencoded'
-    //         },
-    //     });
-    //     res.send(
-    //         { 
-    //             name: "Hello World",
-    //             response
-    //         }
-    //     )
-    // } catch (error) {
-    //     console.error(error);
-    //     res.send(error);
-    // }
+    try {
+        const response = await axios.post(url, qs.stringify(values), {
+            headers: {
+                "Content-Type": 'application/x-www-form-urlencoded'
+            },
+        });
+        res.send(
+            { 
+                name: "Hello World",
+                response
+            }
+        )
+    } catch (error) {
+        console.error(error);
+        res.send(error);
+    }
 })
 
 
