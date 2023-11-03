@@ -39,6 +39,8 @@ router.get('/user/auth/', async (req, res) => {
     const url = "https://api.instagram.com/oauth/access_token";
     
     try {
+        console.log('in try block');
+        console.log(values);
         const response = await axios.post({
             url,
             data: values
@@ -47,6 +49,7 @@ router.get('/user/auth/', async (req, res) => {
         res.send(response);
     } catch (error) {
         console.log('here4');
+        console.error(error);
         res.send({in: "error"});
     }
 })
