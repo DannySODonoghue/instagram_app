@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 router.get('/user/auth/', async (req, res) => {
     const code = req.query.code;
 
-    const instaForm = new URLSearchParams(values);
+    const instaForm = new URLSearchParams();
     instaForm.append('client_id', CLIENT_ID);
     instaForm.append('client_secret', CLIENT_SECRET);
     instaForm.append('grant_type', 'authorization_code');
