@@ -34,9 +34,7 @@ router.get('/user/auth/', async (req, res) => {
     
     try {
         console.log('in try block');
-        const response = await axios.post({
-            url,
-            data : instaForm,
+        const response = await axios.post(url, instaForm, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             }
