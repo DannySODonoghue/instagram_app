@@ -40,7 +40,7 @@ router.get('/user/auth/', async (req, res) => {
             }
         });
         console.log('here');
-        res.send({response});
+        res.send(response.data);
     } catch (error) {
         console.log('here4');
         console.error(error);
