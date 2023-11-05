@@ -1,5 +1,6 @@
 const axios = require("axios");
 const qs = require("qs");
+const url = require('url');
 const { Router } = require("express");
 const router = Router();
 
@@ -40,12 +41,37 @@ router.get('/user/auth/', async (req, res) => {
             }
         });
         console.log('here');
-        res.send(response.data);
+        const user_id = response.data.user_id;
+        const access_token = response.data.access_token;
+
+        res.redirect(url.format({
+            pathname:`https://instaunfollowers-dc8e3299f8e9.herokuapp.com/userInfo`,
+            query: {
+               user_id,
+               access_token
+            }
+        }));
+
     } catch (error) {
-        console.log('here4');
         console.error(error);
         res.send({in: "error"});
     }
+})
+
+router.get('/userInfo', async (req, res, next) => {
+    console.log('here5');
+    const user_id = req.query.user_id;
+    const access_token = req.query.access_token;
+    const url = `https://graph.instagram.com/${user_id}?fields=id,username,media_count&access_token=${access_token}`;
+
+    try {
+        const response = await axios.post(url);
+        res.send(response.data);
+    } catch (err) {
+        console.error(err);
+        res.send({second: "error"});
+    }
+
 })
 
 
