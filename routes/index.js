@@ -1,6 +1,6 @@
 const axios = require("axios");
 const qs = require("qs");
-const url = require('url');
+const URL = require('url');
 const { Router } = require("express");
 const router = Router();
 
@@ -44,7 +44,7 @@ router.get('/user/auth/', async (req, res) => {
         const user_id = response.data.user_id;
         const access_token = response.data.access_token;
 
-        res.redirect(url.format({
+        res.redirect(URL.format({
             pathname:`https://instaunfollowers-dc8e3299f8e9.herokuapp.com/userInfo`,
             query: {
                user_id,
