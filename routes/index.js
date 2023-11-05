@@ -65,7 +65,7 @@ router.get('/userInfo', async (req, res, next) => {
     const url = `https://graph.instagram.com/${user_id}?fields=id,username,media_count&access_token=${access_token}`;
 
     try {
-        const response = await axios.post(url);
+        const response = await axios.get(url);
         res.send(response.data);
     } catch (err) {
         console.error(err);
